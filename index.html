@@ -103,87 +103,29 @@
   #sparkles { z-index: 5; }
   #tap-layer { z-index: 7; pointer-events: none; }
 
-  /* —— 月饼（替代月亮，右上角视觉锚点）—— */
+  /* —— 写实月饼（替代月亮，右上角视觉锚点）—— */
   #mooncake-layer {
     z-index: 3;
+    pointer-events: none;
   }
 
   #mooncake {
     position: absolute;
-    top: 12%;
-    right: 8%;
-    width: min(34vw, 132px);
-    height: min(34vw, 132px);
-    transform: translateZ(-60px) rotate(-12deg);
+    top: 11%;
+    right: 7%;
+    width: min(36vw, 148px);
+    height: auto;
+    transform: translateZ(-60px) rotate(-8deg);
     transform-style: preserve-3d;
     animation: cakeFloat 5s ease-in-out infinite;
+    filter:
+      drop-shadow(0 14px 28px rgba(20, 0, 30, 0.5))
+      drop-shadow(0 0 28px rgba(255, 180, 90, 0.35));
   }
 
   @keyframes cakeFloat {
-    0%, 100% { transform: translateZ(-60px) rotate(-12deg) translateY(0); }
-    50% { transform: translateZ(-60px) rotate(-10deg) translateY(-10px); }
-  }
-
-  .cake-glow {
-    position: absolute;
-    inset: -22%;
-    border-radius: 50%;
-    background: radial-gradient(circle, rgba(255, 190, 100, 0.4), rgba(255, 120, 220, 0.12) 50%, transparent 70%);
-    filter: blur(10px);
-    pointer-events: none;
-  }
-
-  .cake-body {
-    position: absolute;
-    inset: 8% 6% 12% 6%;
-    border-radius: 50%;
-    background:
-      radial-gradient(circle at 35% 30%, #f0c27a 0%, #d4923e 38%, #b56d28 68%, #8a4a18 100%);
-    box-shadow:
-      inset -10px -12px 22px rgba(80, 30, 10, 0.4),
-      inset 8px 8px 16px rgba(255, 230, 160, 0.35),
-      0 10px 28px rgba(20, 0, 30, 0.45),
-      0 0 36px rgba(255, 180, 90, 0.35);
-    overflow: hidden;
-  }
-
-  /* 月饼表面纹路 */
-  .cake-body::before {
-    content: "";
-    position: absolute;
-    inset: 14%;
-    border-radius: 50%;
-    border: 3px solid rgba(120, 60, 20, 0.28);
-    box-shadow: inset 0 0 0 2px rgba(255, 210, 140, 0.15);
-    background:
-      radial-gradient(circle at center, transparent 42%, rgba(120, 55, 15, 0.12) 43%);
-  }
-
-  .cake-body::after {
-    content: "月";
-    position: absolute;
-    inset: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: min(8vw, 34px);
-    font-weight: 700;
-    color: rgba(110, 50, 15, 0.42);
-    letter-spacing: 0;
-    text-shadow: 0 1px 0 rgba(255, 220, 150, 0.25);
-  }
-
-  .cake-rim {
-    position: absolute;
-    left: 4%;
-    right: 4%;
-    bottom: 4%;
-    height: 22%;
-    border-radius: 50%;
-    background: linear-gradient(180deg, #a86828, #7a4214);
-    box-shadow: 0 6px 14px rgba(20, 0, 30, 0.35);
-    z-index: -1;
-    filter: blur(0.3px);
+    0%, 100% { transform: translateZ(-60px) rotate(-8deg) translateY(0); }
+    50% { transform: translateZ(-60px) rotate(-6deg) translateY(-10px); }
   }
 
   /* —— 快速划过祝福语（近大远小 / 近快远慢）—— */
@@ -686,11 +628,7 @@
     <div id="world">
       <div class="layer" id="bg-text"></div>
       <div class="layer" id="mooncake-layer">
-        <div id="mooncake" aria-hidden="true">
-          <div class="cake-glow"></div>
-          <div class="cake-rim"></div>
-          <div class="cake-body"></div>
-        </div>
+        <img id="mooncake" src="mooncake.png" alt="" draggable="false" />
       </div>
       <div class="layer" id="petals"></div>
       <div class="layer" id="main-text"></div>
